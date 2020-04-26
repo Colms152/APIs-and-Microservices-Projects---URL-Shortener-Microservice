@@ -18,6 +18,9 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/public", express.static(`${process.cwd()}/public`));
 
+
+app.use(cors());
+
 /** this project needs a db !! **/ 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -38,7 +41,6 @@ const urlSchema = new mongoose.Schema({
 }),
 urlModel = mongoose.model("url", urlSchema);
 
-app.use(cors());
 
 
 

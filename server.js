@@ -55,6 +55,7 @@ app.get('/', function(req, res){
 // receive a POST request with an URL to be saved on db
 app.post("/api/shorturl/new", (req, res) => {
   const { url } = req.body;
+  res.json({ link : { url }});
   // remove both transfer protocol & www from url
   var link = url.replace(/(^\w+:|^)\/\/|(www\.)/gi, "");
 

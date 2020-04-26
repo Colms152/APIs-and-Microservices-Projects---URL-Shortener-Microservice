@@ -51,7 +51,7 @@ app.get('/', function(req, res){
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-router.get('/is-mongoose-ok', function(req, res) {
+app.get('/is-mongoose-ok', function(req, res) {
   if (mongoose) {
     res.json({isMongooseOk: !!mongoose.connection.readyState})
   } else {

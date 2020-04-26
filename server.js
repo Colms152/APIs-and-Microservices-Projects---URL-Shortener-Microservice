@@ -67,7 +67,6 @@ app.post("/api/shorturl/new", (req, res) => {
     // return error if domain is invalid, else proceed further
     err ? res.json({ error: "invalid URL" }) : onSuccess();
   });
-  res.json({ url: link });
   const onSuccess = () => {
     var data;
 

@@ -51,6 +51,13 @@ app.get('/', function(req, res){
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
+router.get('/is-mongoose-ok', function(req, res) {
+  if (mongoose) {
+    res.json({isMongooseOk: !!mongoose.connection.readyState})
+  } else {
+    res.json({isMongooseOk: false})
+  }
+});
 
 // receive a POST request with an URL to be saved on db
 app.post("/api/shorturl/new", (req, res) => {

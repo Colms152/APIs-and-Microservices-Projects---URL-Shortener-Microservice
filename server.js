@@ -29,8 +29,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // check the database connection status
 mongoose.connection.once("open", () => {
   mongoose.connection.readyState === 1
-    ? res.json({ error: "invalid URL" })
-    
+    ? console.log("DB Connection Successful!")    
     : console.log("Didn't connect to the DB!");
 });
 

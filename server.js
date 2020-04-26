@@ -1,7 +1,6 @@
 'use strict';
 
 var express = require('express');
-var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 var cors = require('cors');
@@ -30,7 +29,8 @@ mongoose.connect(process.env.MONGO_URI, {
 // check the database connection status
 mongoose.connection.once("open", () => {
   mongoose.connection.readyState === 1
-    ? console.log("DB Connection Successful!")
+    ? res.json({ error: "invalid URL" })
+    
     : console.log("Didn't connect to the DB!");
 });
 

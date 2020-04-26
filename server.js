@@ -55,7 +55,6 @@ app.get('/', function(req, res){
 // receive a POST request with an URL to be saved on db
 app.post("/api/shorturl/new", (req, res) => {
   const { url } = req.body;
-  res.json({ link : { url }});
   // remove both transfer protocol & www from url
   var link = url.replace(/(^\w+:|^)\/\/|(www\.)/gi, "");
 
@@ -75,6 +74,7 @@ app.post("/api/shorturl/new", (req, res) => {
         data = entries;
         // create the document entry & generate the short url
         const entry = new urlModel({ id: data.length, url: link });
+        res.json( entry);
         // check if already in the db
         data = data.filter(obj => obj["url"] === link);
         if (data.length === 0) {
